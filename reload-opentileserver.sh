@@ -24,7 +24,7 @@ fi
 #C_MEM is the sum of free memory and cached memory
 C_MEM=$(free -m | grep -i 'mem:' | sed 's/[ \t]\+/ /g' | cut -f4,7 -d' ' | tr ' ' '+' | bc)
 NP=$(grep -c 'model name' /proc/cpuinfo)
-osm2pgsql_OPTS="--slim -d ${OSM_DB} -C ${C_MEM} --number-processes ${NP}"
+osm2pgsql_OPTS="--slim -d ${OSM_DB} -C 8000 --number-processes ${NP}"
 PG_VER=$(pg_config | grep '^VERSION' | cut -f4 -d' ' | cut -f1,2 -d.)
 
 #Clear renderd cache
